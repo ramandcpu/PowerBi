@@ -52,22 +52,86 @@ A few important points:
 - Power BI supports MySQL versions 5.7 and above.
 
 
-### Power Bi:
+# Power Bi Power Query:
+
+After connecting to the database, you will be taken to the Power Query Editor within Power BI. This is the stage where you can tidy up and make modifications to the data. We are going to perform a few tasks here. 
+
+First, let's remove any unnecessary columns. If you select the 'employees titles' table, you will notice a column named 'employees.employees'. This column was automatically added by Power BI. To remove it, right-click on the column and select 'Remove' from the context menu. 
+
+
+<img src="/part-1/pics/pic-9.png" width="500" />
+
+<img src="/part-1/pics/pic-11.png" width="500" />
+
+
+Following the same process, remove the 'employee.dept_emp', 'employees.dept_manager', 'employees salaries', and 'employees titles' columns from the 'employees employees' table. Since you're familiar with the structure of our database from the MySQL tutorial, you can identify and remove any extra columns that were automatically added by Power BI. You understand the process now, so continue cleaning up the tables by removing unnecessary columns.
+
+
+<img src="/part-1/pics/pic-12.png" width="500" />
+
+## Adding A Column 'full_name':
+
+In the 'employees employees' table, we will create a new column by combining the 'first_name' and 'last_name' columns. To do this, select both columns by clicking on one and then pressing the 'Ctrl' key while clicking on the other. 
+
+Next, navigate to the 'Add Column' ribbon and click on 'Merge Columns'. You should see options similar to the ones shown in the picture below. Adjust your settings to match the options in the picture, and then click 'OK'. You should now have a new column named 'full_name' added to the end of the table.
+
+<img src="/part-1/pics/pic-13.png" width="500" />
+
+## Adding A Column 'Age':
+
+In the 'employees employees' table, we will add another column based on the 'birth_date' column. Select the 'birth_date' column, then go to the 'Add Column' ribbon and click on the down arrow next to 'Date'. From the options, choose 'Age'. This will add a new column called 'Age'. However, you might notice that the values in this column are displayed as long numbers with decimals. We will address this formatting issue in the next step.
+
+
+<img src="/part-1/pics/pic-21.png" width="500" />
+
+
+Let's now utilize the 'Transform' ribbon. Select the 'Age' column, then navigate to the 'Transform' ribbon. Click on 'Duration' and choose 'Total Year'. This will transform the values in the 'Age' column to display the age in years without decimals. While you could have achieved the same result by right-clicking and using the context menu, I wanted to demonstrate how to leverage the 'Transform' ribbon for such operations.
+
+
+<img src="/part-1/pics/pic-23.png" width="500" />
+
+To display the age values as whole numbers without decimals, click on the left-most corner of the 'Age' column. This will reveal a dropdown menu. From the options, select 'Whole Number' as shown in the picture.
+
+<img src="/part-1/pics/pic-24.png" width="500" />
+
+## Adding Two More Columns 'to_year' & 'emp_status':
+
+"In the 'employees dept_emp_latest_date' table, we will add a new column called 'to_year'. Subsequently, we will create another column based on the 'to_year' column, which will indicate whether an employee is currently working or has left the company.
+
+steps:
+
+1. In Power Query Editor, select the date column you want to extract the year from (e.g. "to_year").
+
+2. Go to Add Column > Custom Column on the ribbon.
+
+<img src="/part-1/pics/pic-16.png" width="500" />
+
+4. In the new column formula dialog, provide a name for the new column like "to_year".
+
+5. Enter the following formula:
+
+```
+= Date.Year([to_date])
+```
 
 
 
+This will create a new "to_year" column containing just the year values extracted directly from the "to_date" column.For the 'emp_status' column, follow the same steps as before. However, this time, use the following formula:
+
+```
+= if [to_year] = 9999 then "still working" else "not working"
+```
+
+<img src="/part-1/pics/pic-17.png" width="500" />
 
 
 
+Before finalizing our work in the Power Query Editor, let's modify the query names listed in the left column labeled 'Queries'. Power BI has prefixed the word 'employees' to each query name. We will remove this prefix from all the queries. After making these changes, the query names should match the ones shown in the picture below.
+
+<img src="/part-1/pics/pic-27.png" width="500" />
 
 
-
-
-
-
-
-
-
+With all the necessary modifications and transformations completed in the Power Query Editor, click on 'Close & Apply' in the Home ribbon.
 
 
 
