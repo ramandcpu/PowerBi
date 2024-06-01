@@ -133,6 +133,70 @@ Before finalizing our work in the Power Query Editor, let's modify the query nam
 
 With all the necessary modifications and transformations completed in the Power Query Editor, click on 'Close & Apply' in the Home ribbon.
 
+<img src="/part-1/pics/pic-26.png" width="500" />
+
+
+# Model View
+
+Apart from one minor change, Power BI has correctly identified the relationships between the tables, as evident when comparing it to the figure from MySQL Workbench shown at the beginning of the tutorial.
+
+
+<img src="/part-1/pics/pic-28.png" width="500" />
+
+To fix this minor issue, double-click on the highlighted line and choose 'Single' in the 'Cross-filter direction' section at the bottom, as shown in the provided image.
+
+
+<img src="/part-1/pics/pic-29.png" width="500" />
+
+# DAX (Data Analysis Expressions) 
+
+###  DAX: total employees
+
+Let's navigate to the Table view to create a couple of DAX Measures. Right-click on the 'employees' table and select 'New Measure'. When the input bar appears, enter the following formula: total employees = COUNTROWS(employees).
+
+Steps to create a new DAX Measure in the Table view:
+
+1. In Power BI Desktop, switch to the "Data" view by clicking on the "Data" icon in the left-hand pane.
+
+2. Locate the "Tables" section, which lists all the tables you have imported or created.
+
+3. Right-click on the "employees" table, and from the context menu, select "New Measure".
+
+4. A new formula bar will appear, allowing you to enter a DAX expression.
+
+5. In the formula bar, type the following expression:
+
+```
+total employees = COUNTROWS(employees)
+```
+
+6. Press Enter or click the checkmark icon to commit the new measure.
+
+The measure "total employees" will now be listed under the "employees" table in the "Fields" pane. You can use this measure in your reports and visualizations to display the total count of employees in the dataset.
+
+Here's a breakdown of the formula:
+
+- `total employees` is the name you're giving to the new measure.
+- `COUNTROWS(employees)` is the DAX function that counts the number of rows in the "employees" table.
+
+By following these step-by-step instructions, you can create a new DAX Measure called "total employees" that calculates the total number of employees in your dataset.
+
+<img src="/part-1/pics/pic-34.png" width="500" />
+
+## DAX: Employees by Department
+
+Following the same process, let's create another Measure called 'Employees by Department'. However, this time, use the following formula:
+
+```
+Employees by Department = 
+CALCULATE(
+    COUNTROWS('employees'),
+    FILTER(
+        'dept_emp',
+        'dept_emp'[dept_no] = MAX('departments'[dept_no])
+    )
+)
+```
 
 
 
