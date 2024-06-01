@@ -1,5 +1,44 @@
 
-<img src="/part-1/pics/pic-1.png" width="500" />
+# Unleash the Power of Data Visualization with Power BI
+
+<img src="/part-1/pics/pic-51.png" width="500" />
+
+#### Even though I've provided high-level step-by-step instructions, you should still be comfortable with Power BI or at least be able to navigate around. If not, consider using some tutorial videos on YouTube instead.
+
+Here's a short agenda that outlines the key topics to be covered:
+
+## Agenda
+
+1. **Connecting Power BI to MySQL Database**
+   - Importing data from MySQL
+   - Selecting relevant tables
+
+2. **Power Query Transformations**
+   - Cleaning and shaping data
+   - Removing unnecessary columns
+   - Handling missing values
+
+3. **Data Modeling in Power BI**
+   - Creating relationships between tables
+   - Defining fact and dimension tables
+   - Optimizing the data model
+
+4. **Introduction to DAX (Data Analysis Expressions)**
+   - Creating calculated columns
+   - Defining measures
+   - Applying filters and slicers
+
+5. **Visualizing Data with Charts**
+   - Selecting appropriate chart types
+   - Configuring chart elements (axes, legends, colors)
+   - Customizing chart formatting
+
+6. **Insights and Reporting**
+   - Generating meaningful insights from the data
+   - Creating interactive reports and dashboards
+   - Sharing and publishing reports
+
+
 
 
 The picture below represents the relationships between tables in our sample database. This diagram was obtained by using the Reverse Engineering feature of MySQL Workbench, which allows you to visualize the structure and relationships of an existing database. When importing this data into Power BI, we need to verify that these relationships are correctly established. If the relationships are not accurately represented, we will have to make the necessary corrections within Power BI to ensure data integrity and accurate analysis.
@@ -197,7 +236,53 @@ CALCULATE(
     )
 )
 ```
+# Report View: Creating Different Charts
 
+
+By following the general high-level instructions I'm about to provide, I will show you how to create a chart. The steps and options are very intuitive for our examples. Therefore, I'm only going to show you my pictures with the important options filled in.
+
+Here are the step-by-step instructions to create a stacked bar chart for employees using the 2024 version of Power BI:
+
+## Creating a Stacked Bar Chart for Employees
+
+1. Launch Power BI Desktop and import the employees dataset into Power BI. 
+
+2. Once the data is loaded, switch to the "Report" view by clicking on the "Report" icon in the left-hand pane.
+
+3. From the "Visualizations" pane, click on the "Stacked Bar Chart" icon to add a new stacked bar chart visual to the report canvas.
+
+4. In the "Fields" pane, locate the table containing employee information (e.g., "employees" table).
+
+5. Drag and drop the field representing the employee categories (e.g., "department" or "job_title") into the "Y-axis" area of the visualizations pane. 
+
+6. Next, drag and drop the field containing the numerical data you want to visualize (e.g., "salary" or "hours_worked") into the "X-axis" area of the visualizations pane. This will determine the height or length of the bars.
+
+7. If you want to break down the bars into subcategories, drag and drop another field (e.g., "gender" or "age_group") into the "Stack by" area of the visualizations pane. This will create stacked segments within each bar, representing the subcategories.
+
+8. Optionally, you can customize the appearance of the stacked bar chart by using the formatting options available in the "Visualizations" pane. This includes changing colors, adding data labels, adjusting axis titles, and more.
+
+
+By following these steps, you can create an insightful stacked bar chart that visualizes employee data, such as salaries, hours worked, or other relevant metrics, broken down by categories like department, job title, gender, or age group. The stacked bar chart will help you identify patterns, compare values across categories, and make data-driven decisions related to your workforce.
+
+Below is the picture for the 'Number of Employees by Department' chart.
+
+<img src="/part-1/pics/pic-52.png" width="500" />
+
+Below is the picture for the '"No of Employees by Department & Gender"' chart.
+
+<img src="/part-1/pics/pic-53.png" width="500" />
+
+Below is the picture for the 'Total Employees by Gender' chart. *Bender  --error :)
+
+<img src="/part-1/pics/pic-54.png" width="500" />
+
+Below is the picture for the Slicer called 'Timeframe' chart.
+
+<img src="/part-1/pics/pic-55.png" width="500" />
+
+
+
+#### Once you're satisfied with the stacked bar chart, you can save the report and share it with others or incorporate it into a larger dashboard or report.
 
 
 
